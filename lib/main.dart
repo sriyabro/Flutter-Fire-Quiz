@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:quizapp/routes.dart';
 
 // Import the firebase_core plugin
 import 'package:firebase_core/firebase_core.dart';
@@ -46,7 +47,9 @@ class _AppState extends State<App> {
 
         // Once complete, show the application
         if (snapshot.connectionState == ConnectionState.done) {
-          return MaterialApp();
+          return MaterialApp(
+            routes: appRoutes,
+          );
         }
 
         // Otherwise, show loading whilst waiting for initialization to complete
