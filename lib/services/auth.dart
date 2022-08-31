@@ -11,4 +11,8 @@ class AuthService {
       // handle anan login error
     }
   }
+
+  Future<void> signOut() async {
+    await FirebaseAuth.instance.signOut();
+  }
 }
