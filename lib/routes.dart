@@ -5,7 +5,7 @@ import 'package:quizapp/profile/profile.dart';
 import 'package:quizapp/topics/topics.dart';
 
 var appRoutes = {
-  '/': (context) => const HomeScreen(),
+  '/': (context) => const TopicsScreen(),
   '/login': (context) => const LoginScreen(),
   '/topics': (context) => const TopicsScreen(),
   '/profile': (context) => const ProfileScreen(),
