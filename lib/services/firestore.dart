@@ -1,6 +1,8 @@
 import 'dart:async';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:quizapp/services/auth.dart';
 import 'package:quizapp/services/models.dart';
+import 'package:rxdart/rxdart.dart';
 
 class FirestoreService {
   final FirebaseFirestore _db = FirebaseFirestore.instance;
@@ -20,5 +22,17 @@ class FirestoreService {
     var snapshot = await ref.get();
     var quiz = Quiz.fromJson(snapshot.data() ?? {});
     return quiz;
+  }
+
+  /// Listens to current user's report doc
+  Stream<Report> streamReport() {
+    return AuthService().userStream.switchMap((user) {
+      if (user != null) {
+        var ref = _db.collection('reports').doc(user.uid);
+        return ref.snapshots().map((doc) => Report.fromJson(doc.data()!));
+      } else {
+        return Stream.fromIterable([Report()]);
+      }
+    });
   }
 }
