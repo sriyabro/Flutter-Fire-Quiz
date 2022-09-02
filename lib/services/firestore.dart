@@ -13,4 +13,12 @@ class FirestoreService {
     var topics = data.map((d) => Topic.fromJson(d));
     return topics.toList();
   }
+
+  /// Retrive a single quiz document
+  Future<Quiz> getQuiz(String quizId) async {
+    var ref = _db.collection('quizzes').doc(quizId);
+    var snapshot = await ref.get();
+    var quiz = Quiz.fromJson(snapshot.data() ?? {});
+    return quiz;
+  }
 }
