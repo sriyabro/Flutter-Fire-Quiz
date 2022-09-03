@@ -23,7 +23,7 @@ dependencies:
   crypto: ^3.0.2
   json_annotation: ^4.6.0
   rxdart: ^0.27.5
-  # provider: 6.0.3
+  provider: ^6.0.3
 
 dev_dependencies:
   flutter_test:
@@ -35,8 +35,6 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
-
-  # To add assets to your application, add an assets section, like this:
   assets:
     - assets/
     - assets/covers/
