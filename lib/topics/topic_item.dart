@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:quizapp/services/models.dart';
+import 'package:quizapp/topics/topic.dart';
 
 class TopicItem extends StatelessWidget {
   final Topic topic;
@@ -14,6 +15,11 @@ class TopicItem extends StatelessWidget {
         child: InkWell(
           onTap: () {
             // navigate to topic screen
+            Navigator.of(context).push(
+              MaterialPageRoute(
+                builder: (BuildContext context) => TopicScreen(topic: topic),
+              ),
+            );
           },
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
