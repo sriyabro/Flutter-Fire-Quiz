@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
-// Import the firebase_core plugin
 import 'package:firebase_core/firebase_core.dart';
+import 'package:provider/provider.dart';
+import 'package:quizapp/services/firestore.dart';
+import 'package:quizapp/services/models.dart';
 import 'firebase_options.dart';
 
 import 'package:quizapp/routes.dart';
@@ -48,9 +50,13 @@ class _AppState extends State<App> {
 
         // Once complete, show the application
         if (snapshot.connectionState == ConnectionState.done) {
-          return MaterialApp(
-            routes: appRoutes,
-            theme: appTheme,
+          return StreamProvider(
+            create: (_) => FirestoreService().streamReport(),
+            initialData: Report(),
+            child: MaterialApp(
+              routes: appRoutes,
+              theme: appTheme,
+            ),
           );
         }
 
