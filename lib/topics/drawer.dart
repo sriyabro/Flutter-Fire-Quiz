@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:quizapp/services/models.dart';
 
+import '../quiz/quizlist.dart';
+
 class TopicDrawer extends StatelessWidget {
   final List<Topic> topics;
   const TopicDrawer({Key? key, required this.topics}) : super(key: key);
@@ -25,6 +27,7 @@ class TopicDrawer extends StatelessWidget {
                   ),
                 ),
               ),
+              QuizList(topic: topic),
             ],
           );
         },
